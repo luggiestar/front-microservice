@@ -1,0 +1,30 @@
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">  
+            <div class="card">
+                <div class="card-header bg-primary text-white h5">
+                    {{student?.fname}} {{student?.lname}}
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>Course</th>
+                            <th>Score</th>
+                            <th>Grade</th>
+                        </tr>
+                        <tr *ngFor="let result of resultList; let i = index" [attr.data-index]="i">
+                            <td>{{result.course | uppercase}}</td>
+                            <td>{{result.score}}</td>
+                            <td *ngIf="result.score >= 70">A</td>
+                            <td *ngIf="result.score >= 60 && result.score < 70">B+</td>
+                            <td *ngIf="result.score >= 50 && result.score < 60">B</td>
+                            <td *ngIf="result.score >= 40 && result.score < 50">C</td>
+                            <td *ngIf="result.score < 40">Fail</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container mt-3">
+    <div class="card card-body mb-3">
+        <form #form="ngForm" (submit)="saveProgramme(form)">
+            <div class="mb-3">
+                <input type="text" name="name" class="form-control" ngModel #name="ngModel">
+            </div>
+            <input type="submit" value="save programme" class="btn btn-dark">
+        </form>
+    </div>
+    
+    <div class="card card-body">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="programmeList.length > 0">
+                    <tr *ngFor="let programme of programmeList; let i = index" [attr.data-index]="i">
+                        <td>{{i+1}}</td>
+                        <td>{{programme.name}}</td>
+                        <td>
+                            <a class="text-danger nav-link" (click)="deleteProgramme(programme.id, i)">X</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
